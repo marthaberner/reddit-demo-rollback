@@ -29,6 +29,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def update
+    @post = current_user.posts.find_by(id: params[:id])
+    if @post
+      @post.update(post_params)
+      redirect_to root_path, notice: "Your post was updated"
+    end
+  end
+
   def destroy
     @post = current_user.posts.find_by(id: params[:id])
     if @post

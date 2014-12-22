@@ -1,13 +1,16 @@
-<h1>Geddit!</h1>
-
+<h2>Recent Posts</h2>
+<hr>
 <% @posts.each do |post| %>
-  <li>
-  <%= link_to post.title, post %> - posted
-  <%= time_ago_in_words(post.created_at) %> ago -  by
-  <%= post.user.username %>
+<div class="panel panel-default">
+  <div class="panel-body">
+  <%= link_to post.title, post %>
+  <p>
+    posted <%= time_ago_in_words(post.created_at) %> ago -  by
+    <%= post.user.username %>
 
-  </li>
-
+  </p>
+  </div>
+</div>
 <% end %>
 
 <%= link_to "Post something", new_post_path %>

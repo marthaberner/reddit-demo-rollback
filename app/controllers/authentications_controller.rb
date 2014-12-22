@@ -8,7 +8,7 @@ class AuthenticationsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "You are signed in"
+      redirect_to root_path, notice: "Signed in successfully"
     else
       render :new
     end
@@ -16,7 +16,7 @@ class AuthenticationsController < ApplicationController
 
   def destroy
     session.destroy
-    redirect_to root_path
+    redirect_to root_path, notice: "You have been signed out"
   end
 
 end

@@ -1,6 +1,6 @@
-<h1>Register Yourself!</h1>
-
-<%= form_for @user, url: signup_path do |f| %>
+<h1>Register</h1>
+<hr>
+<%= form_for @user, url: signup_path, html: { class: "form-horizontal reg-form"} do |f| %>
   <% if @user.errors.present? %>
     <% @user.errors.full_messages.each do |msg|  %>
     <p>
@@ -8,17 +8,38 @@
     </p>
     <% end %>
   <% end %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+  <div class="form-group">
+    <%= f.label :email, class: "sr-only" %>
+    <div class="col-xs-6">
+      <%= f.email_field :email, placeholder: "Email", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :username, class: "sr-only" %>
+    <div class="col-xs-6">
+      <%= f.text_field :username, placeholder: "Username", class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+  <div class="form-group">
+    <%= f.label :password, class: "sr-only" %>
+    <div class="col-xs-6">
+      <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  <div class="form-group">
+    <%= f.label :password_confirmation, class: "sr-only" %>
+    <div class="col-xs-6">
+      <%= f.password_field :password_confirmation, placeholder: "Password Confirmation",
+      class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+  <div class="form-group">
+    <div class="col-xs-6">
+    <%= f.submit class: "btn btn-md btn-primary btn-block" %>
+    </div>
+  </div>
 
-  <%= f.submit %>
 <% end %>
